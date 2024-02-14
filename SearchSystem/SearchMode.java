@@ -11,17 +11,35 @@ public class SearchMode {
     private String search;
 
     public SearchMode() {
-        addItem();
+        operations();
     }
 
-    private void operations(){
-
+    private void operations() {
+        Object[] options = {"Adicionar nome", "Buscar nomes", "Sair"};
+        int n = JOptionPane.showOptionDialog(null,
+                "Selecione o que deseja:",
+                "Options",
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.INFORMATION_MESSAGE,
+                null,
+                options,
+                options[0]);
+        switch (n) {
+            case 0:
+                addItem();
+                break;
+            case 1:
+                search();
+                break;
+            case 2:
+                System.exit(0);
+        }
     }
+
     private void addItem() {
         itemAdd = JOptionPane.showInputDialog(null, "Digite um nome: ");
         itemAdd.trim().replaceAll("\\s", "");
         list.add(itemAdd);
-        search();
     }
 
     private void search() {
