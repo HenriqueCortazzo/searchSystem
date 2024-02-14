@@ -5,11 +5,9 @@ import java.util.ArrayList;
 
 public class SearchMode {
     private ArrayList<String> list = new ArrayList<>();
+    private ArrayList<String> resultList = new ArrayList<>();
     private String itemAdd;
-
-    private String converted;
     private String search;
-
     public SearchMode() {
         operations();
     }
@@ -40,16 +38,18 @@ public class SearchMode {
         itemAdd = JOptionPane.showInputDialog(null, "Digite um nome: ");
         itemAdd.trim().replaceAll("\\s", "");
         list.add(itemAdd);
+        JOptionPane.showMessageDialog(null,"Operação realizada com sucesso.");
+        operations();
     }
 
     private void search() {
         if (!list.isEmpty()) {
             search = JOptionPane.showInputDialog(null, "Digite o nome de quem está procurando: ");
-            converted = String.valueOf(search.charAt(0));
             for (int i = 0; i < list.size(); i++) {
-                if (String.valueOf(list.get(i).charAt(0)).equals(converted)) {
-                    JOptionPane.showMessageDialog(null, list.get(i));
+                if ((list.get(i).substring(0,search.length())).equals(search)) {
+                    resultList.set(i,list.get(i));
                 }
+                JOptionPane.showMessageDialog(null, resultList);
             }
         } else {
             JOptionPane.showMessageDialog(null, "Não há nomes na lista.");
