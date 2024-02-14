@@ -43,12 +43,17 @@ public class SearchMode {
     }
 
     private void search() {
-        search = JOptionPane.showInputDialog(null, "Digite o nome de quem está procurando: ");
-        converted = String.valueOf(search.charAt(0));
-        for (int i = 0; i < list.size(); i++) {
-            if (String.valueOf(list.get(i).charAt(0)).equals(converted)) {
-                JOptionPane.showMessageDialog(null, list.get(i));
+        if (!list.isEmpty()) {
+            search = JOptionPane.showInputDialog(null, "Digite o nome de quem está procurando: ");
+            converted = String.valueOf(search.charAt(0));
+            for (int i = 0; i < list.size(); i++) {
+                if (String.valueOf(list.get(i).charAt(0)).equals(converted)) {
+                    JOptionPane.showMessageDialog(null, list.get(i));
+                }
             }
+        } else {
+            JOptionPane.showMessageDialog(null, "Não há nomes na lista.");
+            operations();
         }
     }
 
