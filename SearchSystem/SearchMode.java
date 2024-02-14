@@ -14,6 +14,9 @@ public class SearchMode {
         addItem();
     }
 
+    private void operations(){
+
+    }
     private void addItem() {
         itemAdd = JOptionPane.showInputDialog(null, "Digite um nome: ");
         itemAdd.trim().replaceAll("\\s", "");
@@ -26,7 +29,7 @@ public class SearchMode {
         converted = String.valueOf(search.charAt(0));
         for (int i = 0; i < list.size(); i++) {
             if (String.valueOf(list.get(i).charAt(0)).equals(converted)) {
-                JOptionPane.showMessageDialog(null, converted);
+                JOptionPane.showMessageDialog(null, list.get(i));
             }
         }
     }
