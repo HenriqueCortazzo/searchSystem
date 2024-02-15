@@ -4,10 +4,9 @@ import javax.swing.*;
 import java.util.ArrayList;
 
 public class SearchMode {
-    private ArrayList<String> list = new ArrayList<>();
-    private ArrayList<String> resultList = new ArrayList<>();
-    private String itemAdd;
-    private String search;
+    private final ArrayList<String> list = new ArrayList<>();
+    private final ArrayList<String> resultList = new ArrayList<>();
+
     public SearchMode() {
         operations();
     }
@@ -35,19 +34,20 @@ public class SearchMode {
     }
 
     private void addItem() {
-        itemAdd = JOptionPane.showInputDialog(null, "Digite um nome: ");
-        itemAdd.trim().replaceAll("\\s", "");
+        String itemAdd = JOptionPane.showInputDialog(null, "Digite um nome: ");
         list.add(itemAdd);
         JOptionPane.showMessageDialog(null,"Operação realizada com sucesso.");
         operations();
     }
-
     private void search() {
         if (!list.isEmpty()) {
-            search = JOptionPane.showInputDialog(null, "Digite o nome de quem está procurando: ");
+            String search = JOptionPane.showInputDialog(null, "Digite o nome de quem está procurando: ");
             for (int i = 0; i < list.size(); i++) {
-                if ((list.get(i).substring(0,search.length())).equals(search)) {
-                    resultList.set(i,list.get(i));
+                if ((list.get(i).substring(0, search.length())).equals(search)) {
+                    String value = list.get(i);
+                    if (resultList.isEmpty()){
+                       resultList.add(i,value);
+                    }
                 }
                 JOptionPane.showMessageDialog(null, resultList);
             }
